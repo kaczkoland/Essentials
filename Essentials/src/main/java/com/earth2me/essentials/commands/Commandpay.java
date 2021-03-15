@@ -44,6 +44,10 @@ public class Commandpay extends EssentialsLoopCommand {
         }
         final AtomicBoolean informToConfirm = new AtomicBoolean(false);
         final boolean canPayOffline = user.isAuthorized("essentials.pay.offline");
+        if (args[0].equals(user.getName())) {
+            user.sendMessage(tl("sameUsername"));
+            return;    
+        }
         if (!canPayOffline && args[0].equals("**")) {
             user.sendMessage(tl("payOffline"));
             return;
